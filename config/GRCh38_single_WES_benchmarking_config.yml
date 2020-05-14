@@ -1,0 +1,47 @@
+############################
+##### Overall workflow #####
+############################
+
+# Build of reference genome (either 'GRCh37' or 'GRCh38')
+BUILD: "GRCh38"
+
+# Type of input data (either 'Single' or 'Cohort')
+DATA: "Single"
+
+# File directories to reference genome and dbSNP database
+REFGENOME: "/store/lkemp/publicData/referenceGenome/gatkBundle/GRCh38/Homo_sapiens_assembly38.fasta"
+dbSNP: "/store/lkemp/publicData/knownIndels/gatkBundle/GRCh38/Homo_sapiens_assembly38.known_indels.vcf.gz"
+
+# Temporary file directory
+TEMPDIR: "/store/lkemp/exome_project/tmp/"
+
+# WES settings (leave blank if analysing other data such as WGS)
+WES:
+  # Genomic intervals over which to operate
+  INTERVALS: ""
+  # Padding (in bp) to add to each interval
+  PADDING: ""
+
+#############################
+##### Variant filtering #####
+#############################
+
+# Resources used to filter indels and SNP's...
+FILTERING:
+  # ...for analysis of single samples
+  SINGLE: "--resource /store/lkemp/publicData/haplotype/gatkBundle/GRCh38/hapmap_3.3.hg38.vcf.gz
+          --resource /store/lkemp/publicData/dbSNP/gatkBundle/GRCh38/Mills_and_1000G_gold_standard.indels.hg38.vcf.gz"
+
+  # ...for analysis of cohorts
+  COHORT:
+    INDELS: ""
+    SNPS: ""
+
+##########################
+##### VCF annotation #####
+##########################
+
+# File directories to vcf annotation databases
+VEP: ""
+dbNSFP: ""
+CADD: ""
