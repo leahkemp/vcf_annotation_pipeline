@@ -20,8 +20,7 @@ SAMPLES, = glob_wildcards("../vcf/{sample}_raw_snps_indels_AS_g.vcf")
 
 rule all:
     input:
-        expand("annotated/{sample}_filtered_dbnsfp_vep.vcf_summary.txt", sample = SAMPLES),
-        expand("annotated/{sample}_filtered_annotated.vcf", sample = SAMPLES)
+        expand("filtered/{sample}_filtered.vcf", sample = SAMPLES)
 
 ##### Set up report #####
 
@@ -38,7 +37,3 @@ elif config['DATA'] == "Cohort":
     include: "rules/gatk_vqsr_snp.smk"
 else:
     print: ("ERROR: Please check the values you provided in the configuration file")
-
-include: "rules/snpsift_dbnsfp.smk"
-include: "rules/vep.smk"
-include: "rules/genmod_cadd.smk"
