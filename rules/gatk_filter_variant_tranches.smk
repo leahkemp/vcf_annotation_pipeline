@@ -9,7 +9,7 @@ rule gatk4_FilterVariantTranches:
         padding = expand("{padding}", padding = config['WES']['PADDING']),
         intervals = expand("{intervals}", intervals = config['WES']['INTERVALS']),
         resources = expand ("{resources}", resources = config['FILTERING']['SINGLE']),
-        other = "--info-key CNN_2D --snp-tranche 99.95 --indel-tranche 99.4"
+        other = "--info-key CNN_1D --snp-tranche 99.95 --indel-tranche 99.4"
     log:
         "logs/gatk_filter_variant_tranches/{sample}.log"
     benchmark:
