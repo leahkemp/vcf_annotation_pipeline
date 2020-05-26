@@ -9,7 +9,7 @@ rule gatk4_CNNScoreVariants:
         tdir = expand("{tdir}", tdir = config['TEMPDIR']),
         padding = expand("{padding}", padding = config['WES']['PADDING']),
         intervals = expand("{intervals}", intervals = config['WES']['INTERVALS']),
-        other = ""
+        other = "-tensor-type read_tensor"
     log:
         "logs/gatk_score_variants/{sample}.log"
     benchmark:
