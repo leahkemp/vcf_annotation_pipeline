@@ -29,8 +29,10 @@ WES:
 # Resources used to filter indels and SNP's...
 FILTERING:
   # ...for analysis of single samples
-  SINGLE: "--resource /store/lkemp/publicData/haplotype/gatkBundle/GRCh37/hapmap_3.3.hg19.sites.vcf.gz
-          --resource /store/lkemp/publicData/dbSNP/gatkBundle/GRCh37/Mills_and_1000G_gold_standard.indels.hg19.sites.vcf.gz"
+  SINGLE: "--resource /store/lkemp/publicData/dbSNP/gatkBundle/GRCh37/dbsnp_138.hg19.vcf
+          --resource /store/lkemp/publicData/haplotype/gatkBundle/GRCh37/hapmap_3.3.hg19.sites.vcf.gz
+          --resource /store/lkemp/publicData/dbSNP/gatkBundle/GRCh37/Mills_and_1000G_gold_standard.indels.hg19.sites.vcf.gz
+          --resource /store/lkemp/publicData/omni/gatkBundle/GRCh37/1000G_omni2.5.hg19.sites.vcf"
 
   # ...for analysis of cohorts
   COHORT:
