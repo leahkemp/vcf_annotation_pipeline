@@ -20,14 +20,3 @@ rule gatk4_FilterVariantTranches:
         "Applying tranche filtering to variant calls"
     shell:
         "gatk FilterVariantTranches -V {input.vcf} -O {output} --tmp-dir {params.tdir} {params.padding} {params.intervals} {params.resources} {params.other}"
-"
-    log:
-        "logs/gatk_filter_variant_tranches/{sample}.log"
-    benchmark:
-        "benchmarks/gatk_filter_variant_tranches/{sample}.gatkfiltervartranch"
-    singularity:
-        "docker://broadinstitute/gatk:4.1.7.0"
-    message:
-        "Applying tranche filtering to variant calls"
-    shell:
-        "gatk FilterVariantTranches -V {input.vcf} -O {output} --tmp-dir {params.tdir} {params.padding} {params.intervals} {params.resources} {params.other}"
