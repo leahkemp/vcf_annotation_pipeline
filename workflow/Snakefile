@@ -40,7 +40,10 @@ if (config['DATA'] == "Cohort" or config['DATA'] == 'cohort') and (config['PREPA
            input:
                expand("../results/filtered/{sample}_filtered.vcf", sample = SAMPLES),
                expand("../results/annotated/{sample}_filtered_annotated.vcf", sample = SAMPLES),
-               expand("../results/readyforscout/{sample}_filtered_annotated_readyforscout.vcf", sample = SAMPLES)
+               expand("../results/readyforscout/{sample}_filtered_annotated_readyforscout.vcf", sample = SAMPLES),
+               expand("../results/ready_for_scout/{sample}.sex_check.csv", sample = SAMPLES),
+               expand("../results/ready_for_scout/{sample}.ped.data", sample = SAMPLES),
+               expand("../results/ready_for_scout/{sample}_pedigree.xml", sample = SAMPLES)
 
 ##### Set up report #####
 
@@ -48,7 +51,7 @@ report: "report/workflow.rst"
 
 ##### Load rules #####
 
-localrules: gunzip, bgzip, tabix, pbrun_cnnscorevariants, pbrun_vqsr_indel, pbrun_vqsr_snp
+localrules: gunzip, bgzip, tabix, pbrun_cnnscorevariants, pbrun_vqsr_indel, pbrun_vqsr_snp, peddy, ped_parser, madeline2
 
 # Variant filtering
 if (config['DATA'] == "Single" or config['DATA'] == 'single') and (config['GPU_ACCELERATED'] == "No" or config['GPU_ACCELERATED'] == "no"):
@@ -92,3 +95,6 @@ if (config['DATA'] == "Cohort" or config['DATA'] == 'cohort') and (config['PREPA
     include: "rules/gunzip.smk"
     include: "rules/SnpSift_filter_proband.smk"
     include: "rules/genmod_score.smk"
+    include: "rules/peddy.smk"
+    include: "rules/ped_parser.smk"
+    include: "rules/madeline2.smk"
