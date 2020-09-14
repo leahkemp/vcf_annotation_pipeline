@@ -11,7 +11,7 @@ rule gatk_CalculateGenotypePosteriors:
     log: 
         "logs/gatk_CalculateGenotypePosteriors/{sample}.log"
     benchmark:
-        "benchmarks/gatk_CalculateGenotypePosteriors/{sample}.tsv"
+        repeat("benchmarks/gatk_CalculateGenotypePosteriors/{sample}.tsv", 3)
     conda:
         "../envs/gatk4.yaml"
     message:

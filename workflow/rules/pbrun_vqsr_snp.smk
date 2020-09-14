@@ -14,7 +14,7 @@ rule pbrun_vqsr_snp:
     log: 
         "logs/pbrun_vqsr_snp/{sample}.log"
     benchmark:
-        "benchmarks/pbrun_vqsr_snp/{sample}.tsv"
+        repeat("benchmarks/pbrun_vqsr_snp/{sample}.tsv", 3)
     message:
         "Building a recalibration model to score variant quality and using machine learning to filter out probable artifacts from the variant callset (snps) for {input}"
     shell:

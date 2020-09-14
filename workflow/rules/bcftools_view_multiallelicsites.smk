@@ -8,7 +8,7 @@ rule bcftools_view_multiallelicsites:
     log:
         "logs/bcftools_view_multiallelicsites/{sample}.log"
     benchmark:
-        "benchmarks/bcftools_view_multiallelicsites/{sample}.tsv"
+        repeat("benchmarks/bcftools_view_multiallelicsites/{sample}.tsv", 3)
     conda:
         "../envs/bcftools.yaml"
     message:

@@ -14,7 +14,7 @@ rule gatk_VQSR_snp:
     log:
         "logs/gatk_VQSR_snp/{sample}.log"
     benchmark:
-        "benchmarks/gatk_VQSR_snp/{sample}.tsv"
+        repeat("benchmarks/gatk_VQSR_snp/{sample}.tsv", 3)
     conda:
         "../envs/gatk4.yaml"
     message:

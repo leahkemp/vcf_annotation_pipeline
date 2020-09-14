@@ -14,7 +14,7 @@ rule pbrun_vqsr_indel:
     log: 
         "logs/pbrun_vqsr_indel/{sample}.log"
     benchmark:
-        "benchmarks/pbrun_vqsr_indel/{sample}.tsv"
+        repeat("benchmarks/pbrun_vqsr_indel/{sample}.tsv", 3)
     message:
         "Building a recalibration model to score variant quality and using machine learning to filter out probable artifacts from the variant callset (indels) for {input}"
     shell:

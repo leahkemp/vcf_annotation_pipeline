@@ -11,7 +11,7 @@ rule gatk_VariantAnnotator_PossibleDeNovo:
     log: 
         "logs/gatk_VariantAnnotator_PossibleDeNovo/{sample}.log"
     benchmark:
-        "benchmarks/gatk_VariantAnnotator_PossibleDeNovo/{sample}.tsv"
+        repeat("benchmarks/gatk_VariantAnnotator_PossibleDeNovo/{sample}.tsv", 3)
     conda:
         "../envs/gatk4.yaml"
     message:

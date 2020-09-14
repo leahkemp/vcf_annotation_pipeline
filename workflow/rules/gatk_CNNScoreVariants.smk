@@ -13,7 +13,7 @@ rule gatk_CNNScoreVariants:
     log:
         "logs/gatk_CNNScoreVariants/{sample}.log"
     benchmark:
-        "benchmarks/gatk_CNNScoreVariants/{sample}.tsv"
+        repeat("benchmarks/gatk_CNNScoreVariants/{sample}.tsv", 3)
     singularity:
         "docker://broadinstitute/gatk:4.1.7.0"
     threads: 12

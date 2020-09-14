@@ -15,7 +15,7 @@ rule SnpSift_annotate_dbSNP:
     log: 
         "logs/SnpSift_annotate_dbSNP/{sample}.log"
     benchmark:
-        "benchmarks/SnpSift_annotate_dbSNP/{sample}.tsv"
+        repeat("benchmarks/SnpSift_annotate_dbSNP/{sample}.tsv", 3)
     conda:
         "../envs/SnpSift.yaml"
     message:

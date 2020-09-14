@@ -9,7 +9,7 @@ rule genmod_annotate_CADD:
     log: 
         "logs/genmod_annotate_CADD/{sample}.log"
     benchmark:
-        "benchmarks/genmod_annotate_CADD/{sample}.tsv"
+        repeat("benchmarks/genmod_annotate_CADD/{sample}.tsv", 3)
     conda:
         "../envs/genmod.yaml"
     threads: 4

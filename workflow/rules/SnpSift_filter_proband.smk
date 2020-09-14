@@ -8,7 +8,7 @@ rule SnpSift_filter_proband:
     log: 
         "logs/SnpSift_filter_proband/{sample}.log"
     benchmark:
-        "benchmarks/SnpSift_filter_proband/{sample}.tsv"
+        repeat("benchmarks/SnpSift_filter_proband/{sample}.tsv", 3)
     conda:
         "../envs/SnpSift.yaml"
     message:

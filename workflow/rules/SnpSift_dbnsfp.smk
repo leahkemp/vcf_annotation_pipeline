@@ -9,7 +9,7 @@ rule SnpSift_dbnsfp:
     log: 
         "logs/SnpSift_dbnsfp/{sample}.log"
     benchmark:
-        "benchmarks/SnpSift_dbnsfp/{sample}.tsv"
+        repeat("benchmarks/SnpSift_dbnsfp/{sample}.tsv", 3)
     conda:
         "../envs/SnpSift.yaml"
     message:

@@ -13,7 +13,7 @@ rule vep:
     log: 
         "logs/vep/{sample}.log"
     benchmark:
-        "benchmarks/vep/{sample}.tsv"
+        repeat("benchmarks/vep/{sample}.tsv", 3)
     conda:
         "../envs/vep.yaml"
     threads: 8

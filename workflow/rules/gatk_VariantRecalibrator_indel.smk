@@ -17,7 +17,7 @@ rule gatk_VariantRecalibrator_indel:
     log: 
         "logs/gatk_VariantRecalibrator_indel/{sample}.log"
     benchmark:
-        "benchmarks/gatk_VariantRecalibrator_indel/{sample}.tsv"
+        repeat("benchmarks/gatk_VariantRecalibrator_indel/{sample}.tsv", 3)
     conda:
         "../envs/gatk4.yaml"
     message:

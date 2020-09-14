@@ -8,7 +8,7 @@ rule genmod_models:
     log: 
         "logs/genmod_models/{sample}.log"
     benchmark:
-        "benchmarks/genmod_models/{sample}.tsv"
+        repeat("benchmarks/genmod_models/{sample}.tsv", 3)
     conda:
         "../envs/genmod.yaml"
     threads: 16

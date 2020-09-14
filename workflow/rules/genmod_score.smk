@@ -18,7 +18,7 @@ rule genmod_score:
     log: 
         "logs/genmod_score/{sample}.log"
     benchmark:
-        "benchmarks/genmod_score/{sample}.tsv"
+        repeat("benchmarks/genmod_score/{sample}.tsv", 3)
     conda:
         "../envs/genmod.yaml"
     message:

@@ -10,7 +10,7 @@ rule pbrun_cnnscorevariants:
     log:
         "logs/pbrun_cnnscorevariants/{sample}.log"
     benchmark:
-        "benchmarks/pbrun_cnnscorevariants/{sample}.tsv"
+        repeat("benchmarks/pbrun_cnnscorevariants/{sample}.tsv", 3)
     message:
         "Annotating {input.vcf} with scores from a Convolutional Neural Network (CNN) (2D model with pre-trained architecture)"
     shell:
